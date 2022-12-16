@@ -174,12 +174,24 @@ def recog():
                 break
 print("here7")
 
-inputchar = 'i'
-while(inputchar == 'i'):
-    recog()
-    print("Press i for input and recog else press anyother key:")
-    inputchar = input()
+# inputchar = 'i'
+# while(inputchar == 'i'):
+#     recog()
+#     print("Press i for input and recog else press anyother key:")
+#     inputchar = input()
 
+
+from unicodedata import name
+from flask import Flask, jsonify
+app = Flask(__name__)
+
+@app.route('/')
+def apicallfunction():
+    recog()
+    return jsonify({"N":2})
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0")
 
 print("here8")
 cv2.destroyAllWindows()
